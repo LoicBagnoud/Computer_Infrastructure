@@ -40,3 +40,11 @@ The following list outlines the packages used:
 [Matplotlib](https://matplotlib.org/) is an especially useful package for plotting data in formats like line charts, bar graphs, scatter plots, and more. For more information installing matplotlib, please see the following: https://matplotlib.org/stable/users/getting_started/
 >
 #### Yfinance
+
+
+
+For more help in understanding and dealing with each package, please make sure to review and investigate the relevant documentation if anything remains unclear:
+>
+- [Numpy Documentation](https://numpy.org/doc/stable/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/index.html)
+- [Matplotlib Documentation](https://matplotlib.org/)
