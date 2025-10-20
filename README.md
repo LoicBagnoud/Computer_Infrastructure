@@ -40,11 +40,13 @@ The following list outlines the packages used:
 [Matplotlib](https://matplotlib.org/) is an especially useful package for plotting data in formats like line charts, bar graphs, scatter plots, and more. For more information installing matplotlib, please see the following: https://matplotlib.org/stable/users/getting_started/
 >
 #### Yfinance
-
-
-
+>
+[Yfinance](https://pypi.org/project/yfinance/) is an open-source Python library used to download financial and market data from Yahoo Finance. It is designed for research and educational purposes and allows users to fetch data such as historical stock prices, financial statements, and corporate actions for analysis in a Python environment. 
+>
+>
 For more help in understanding and dealing with each package, please make sure to review and investigate the relevant documentation if anything remains unclear:
 >
 - [Numpy Documentation](https://numpy.org/doc/stable/)
 - [Pandas Documentation](https://pandas.pydata.org/docs/index.html)
 - [Matplotlib Documentation](https://matplotlib.org/)
+- [Yfinance Documentation](https://ranaroussi.github.io/yfinance/)
