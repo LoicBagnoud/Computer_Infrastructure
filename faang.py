@@ -22,3 +22,5 @@ time_format = now.strftime("%Y%m%d-%H%M%S")
 # Save it to CSV
 data = f"data/{time_format}.csv"
 df.to_csv(data)
+
+# MUST INSERT A PLOT HERE
