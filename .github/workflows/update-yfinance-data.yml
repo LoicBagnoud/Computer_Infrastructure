@@ -1,0 +1,50 @@
+# Reference: 
+# https://chatgpt.com/share/6936f1d7-80b4-800b-80a6-a7ae44a7cc8b
+
+name: Run faang.py and commit changes
+
+on:
+  # Manual trigger from the Actions tab.
+  workflow_dispatch:
+  # You can add other triggers if you want, e.g.:
+  schedule:
+    - cron: "0 9 * * *"   # 
+
+permissions:
+  contents: write   # allow this workflow to push commits
+
+jobs:
+  run-faang:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # get full history so we can commit
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"   # or whatever version you need
+
+      - name: Install dependencies (if any)
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Commit and push changes (if any)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check if there is anything to commit
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Changes detected, committing..."
+            git add -A
+            git commit -m "Auto-update from faang.py"
+            git push
+          else
+            echo "No changes to commit."
+          fi
