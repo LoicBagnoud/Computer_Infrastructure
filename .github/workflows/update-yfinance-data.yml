@@ -1,14 +1,14 @@
 # Reference: 
-# https://chatgpt.com/share/6936f1d7-80b4-800b-80a6-a7ae44a7cc8b
+# https://chatgpt.com/share/6936f51a-b2ac-800b-ab0e-c4a5ddd1eaf5
 
 name: Run faang.py and commit changes
 
 on:
   # Manual trigger from the Actions tab.
   workflow_dispatch:
-  # You can add other triggers if you want, e.g.:
+  # Optional: scheduled run (this is in UTC)
   schedule:
-    - cron: "0 9 * * *"   # 
+    - cron: "0 9 * * *"   # 09:00 UTC every day
 
 permissions:
   contents: write   # allow this workflow to push commits
@@ -34,6 +34,10 @@ jobs:
             pip install -r requirements.txt
           fi
 
+      - name: Run faang.py
+        run: |
+          python faang.py
+
       - name: Commit and push changes (if any)
         run: |
           git config user.name "github-actions[bot]"
@@ -48,3 +52,4 @@ jobs:
           else
             echo "No changes to commit."
           fi
+
