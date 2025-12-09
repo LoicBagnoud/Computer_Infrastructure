@@ -4,9 +4,16 @@
 
 ### Task Description 
 >
-The following repository is a list of 4 problems that try to explore (to be added)
+The following repository is a list of 4 problems that try to explore how to automate the gathering of stock prices Yahoo's website via the Yfinance package. The main objective is to:
 >
-Everything is stored in a Jupyter Notebook, using Python code, with several comments describing and highlighting the code we use along the way. The Python interpreter is a programming language that is freely accessible and it being the most common language in Data Analysis, it makes sense that we should use it here.
+1. Get data
+2. Plot it
+3. Store it in its appropriate folders
+4. Repeat steps 1-3 every Saturday at 9:30 AM UTC
+>
+Everything is stored in a Jupyter Notebook, using Python code, with several comments describing and highlighting the code we use along the way. References will be included in the code itself, where appropriate or in the actual markdown cells of the Notebook. 
+>
+The Python interpreter is a programming language that is freely accessible and it being the most common language in Data Analysis, it makes sense that we should use it here.
 >
 To run the code, you will need a proper integrated development environment (IDE). It is recommended to use Visual Studio as the IDE of choice but any other IDE is capable of running this code. Visual Studio Code can be downloaded [here](https://code.visualstudio.com/)
 >

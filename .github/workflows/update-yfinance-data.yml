@@ -1,43 +1,61 @@
 # Reference: 
 # https://chatgpt.com/share/6936f51a-b2ac-800b-ab0e-c4a5ddd1eaf5
 
-name: Run faang.py and commit changes
+# This line gives us the name of our github action 
+name: Run script and get yfinance data
 
+# This gives us the conditions on which this action will run
 on:
-  # Manual trigger from the Actions tab.
+  # This would be the Manual trigger from the Actions tab.
   workflow_dispatch:
-  # Optional: scheduled run (this is in UTC)
+  # This would be a scheduled trigger. It would run at the specified time I've set
   schedule:
-    - cron: "15 9 * * *"   # 09:15 UTC every day
+    # 09:30 UTC every Saturday
+    # Reference: https://crontab.guru/#30_9_*_*_6
+    - cron: "30 9 * * 6"   
 
+# This allows us see what permissions this github action has. In this case, it's allowed to commit changes and push changes made
+# via the write function.
 permissions:
-  contents: write   # allow this workflow to push commits
+  contents: write   
 
+ # This is the actual core of what the github action does. The job here is run our script called faang.py
 jobs:
   run-faang:
+    # This is just which virtual machine github should use. In this case it's Linux's ubuntu, the latest version.
     runs-on: ubuntu-latest
 
+    # These are the actual steps that the job is going to do. 
     steps:
+      # The first step is get the latest version of our repository and clone it
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # get full history so we can commit
+          fetch-depth: 0   # the fetch depth is what allows us get the full history, since we're to commit and push, 
+                           # Git needs real history to base that on.
 
+      # this sets up and installs the language we're going to use. In this case, it's python version 3.11                      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"   # or whatever version you need
+          python-version: "3.11"  
 
+      # This installs all the packages that we're going to use. In this case, it will get the depedencies from the 
+      # requirements file in the root of our depository.       
       - name: Install dependencies (if any)
         run: |
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           fi
-
+      
+      # The most important step. Actually running the script.    
       - name: Run faang.py
         run: |
           python faang.py
 
+      # This makes the final adjustments to the final commit after running the script.
+      # If Git reports any changed files, it will then commit them. In case there aren't any changes, it will release
+      # a message saying: "No changes to commit."    
       - name: Commit and push changes (if any)
         run: |
           git config user.name "github-actions[bot]"
