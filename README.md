@@ -4,11 +4,11 @@
 
 ### Task Description 
 >
-The following repository is a list of 4 problems that try to explore how to automate the gathering of stock prices Yahoo's website via the Yfinance package. The main objective is to:
+The following repository is a list of 4 problems that try to automate the gathering of stock prices from Yahoo's website via the Yfinance package. The main objective is to:
 >
-1. Get data
-2. Plot it
-3. Store it in its appropriate folders
+1. Get  all hourly data for the previous five days for the five FAANG stocks from Yfinance
+2. Plot said data
+3. Store both the csv data and its plots it their appropriate folders
 4. Repeat steps 1-3 every Saturday at 9:30 AM UTC
 >
 Everything is stored in a Jupyter Notebook, using Python code, with several comments describing and highlighting the code we use along the way. References will be included in the code itself, where appropriate or in the actual markdown cells of the Notebook. 
